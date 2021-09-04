@@ -25,7 +25,7 @@ function rarityInfo(name: string): ItemRarityInfo {
 }
 
 export function randomBagId() {
-  return String(Math.floor(Math.random() * 7999) + 1);
+  return String(Math.floor(Math.random() * 8000));
 }
 
 export function useBag(
@@ -33,11 +33,11 @@ export function useBag(
 ): null | { id: string; items: Array<ItemRarityInfo>; image: string } {
   const bagId = Number(id);
 
-  if (isNaN(bagId) || bagId < 1 || bagId > 8000) {
+  if (isNaN(bagId) || bagId < 0 || bagId > 8000) {
     return null;
   }
 
-  const itemNames = Object.values(loot[bagId - 1][bagId]) as string[];
+  const itemNames = Object.values(loot[bagId][bagId]) as string[];
 
   return {
     id: String(bagId),

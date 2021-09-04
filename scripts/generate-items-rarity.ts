@@ -1,13 +1,13 @@
 import { hashItem } from "../src/hash-item";
 import occurences from "../data/occurences.json";
-import { levelFromOccurences } from "./utils";
+import { levelFromHash} from "./utils";
 
-type Occurences = Record<string, number>;
+type Occurences = Record<string, Record<string, number>>;
 
 async function main() {
-  const hashedItems = Object.entries(occurences as Occurences).map(
-    ([name, occurences]) => [hashItem(name), occurences]
-  );
+  const hashedItems:(string|number)[][] = Object.values(occurences as Occurences)
+    .flatMap(occurrences => Object.entries(occurrences))
+    .map(([name, occurences]) => [hashItem(name), occurences]);
 
   const uniques = new Set(hashedItems.map(([hash]) => hash)).size;
   if (hashedItems.length !== uniques) {
@@ -16,8 +16,8 @@ async function main() {
   }
 
   const byLevel = hashedItems.reduce(
-    (byLevel: string[], [hash, occurences]) => {
-      const level = levelFromOccurences(Number(occurences));
+    (byLevel: string[], [hash, _]) => {
+      const level = levelFromHash(hash as string);
 
       // No need to store common items, unknown items are always common
       if (level === 1) {

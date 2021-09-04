@@ -3,9 +3,9 @@
 // See scripts/generate-items-rarity.ts to see how it is used.
 export default [
   [-1, "#838383", "Common"],
-  [374, "#00DC82", "Uncommon"],
-  [357, "#2e82ff", "Rare"],
-  [100, "#c13cff", "Epic"],
-  [9, "#f8b73e", "Legendary"],
+  [0.5, "#00DC82", "Uncommon"],
+  [0.75, "#2e82ff", "Rare"],
+  [0.875, "#c13cff", "Epic"],
+  [0.95, "#f8b73e", "Legendary"],
   [1, "#ff44b7", "Mythic"],
 ] as Array<[number, string, string]>;

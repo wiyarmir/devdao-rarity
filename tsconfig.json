@@ -1,8 +1,16 @@
 {
-  "include": ["src", "scripts", "test"],
+  "include": [
+    "src",
+    "scripts",
+    "test"
+  ],
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "dom.iterable",
+      "ESNext"
+    ],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
